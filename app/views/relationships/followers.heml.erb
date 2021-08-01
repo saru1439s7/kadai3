@@ -1,0 +1,6 @@
+<h5>Follower Username</h5>
+<% if @users.exists? %>
+ <%= render '/users/index',users:@users%>
+<% else %>
+ <p>フォロワーはいません</p>
+<% end %>
