@@ -5,6 +5,10 @@ class FavoritesController < ApplicationController
     @book = Book.find(params[:book_id])
     favorite = @book.favorites.new(user_id: current_user.id)
     favorite.save
+    #追加
+
+   @book.create_notification_favorite!(current_user)
+    ###
     redirect_to request.referer
   end
 
@@ -14,15 +18,6 @@ class FavoritesController < ApplicationController
     favorite.destroy
     redirect_to request.referer
   end
-  
-  def create
-    like=current_user.active_like.new(book_id:params[:book_id])
-    like.save
-    @book=Book.find(params[:book_id])
-    @book.create_notification_by(current_user)
-    respond_to do |format|
-      format.html {redirect_to request.referrer}
-      format.js
-    end
-  end
+
+
 end

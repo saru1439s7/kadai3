@@ -7,6 +7,9 @@ class BookCommentsController < ApplicationController
 		@book_comment.book_id = @book.id
 		@book_comment.user_id = current_user.id
 		if @book_comment.save
+			###追加
+		 @book.create_notification_comment!(current_user, @book_comment.id)
+		 #######
   		redirect_to book_path(@book.id)
 		else
 		  render 'books/show'
