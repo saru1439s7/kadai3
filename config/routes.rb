@@ -14,4 +14,5 @@ end
    resources :book_comments, only: [:create, :destroy]
    resources :followers, only: [:create, :destroy]
   end
+   resources :notifications, only: :index
 end
